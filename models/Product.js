@@ -16,7 +16,7 @@ Product.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    productName: {
+    product_name: {
       type: DataTypes.STRING,
       //TODO:Doesn't allow null values.
       allowNull: false,
@@ -43,7 +43,7 @@ Product.init(
         isNumeric: true,
       }
     },
-    categoryId: {
+    category_id: {
       //TODO:Integer.
       type: DataTypes.INTEGER,
       //TODO:References the `Category` model's `id`.
