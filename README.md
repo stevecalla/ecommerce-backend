@@ -103,7 +103,7 @@ Contributor Covenant Code of Conduct
 ## Resources
 
 1. Project Manager: [Steve Calla - GitHub Profile](https://github.com/stevecalla)
-2. GitHub Repo: <https://github.com/stevecalla/employee-tracker>
+2. GitHub Repo: <https://github.com/stevecalla/ecommerce-backend>
 3. GitHub Hosted URL: None. This is command-line interface (CLI) using node.js.
 4. Contact: [Email Steve](mailto:callasteven@gmail.com)
 
