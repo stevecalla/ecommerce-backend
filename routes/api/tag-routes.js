@@ -23,7 +23,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
-
   try {
     const tagData = await Tag.findByPk(req.params.id, {
       include: [{ model: Product }],
@@ -44,7 +43,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new tag
 
-  const newTag = await Tag.create({ tagName: req.body.tagName });
+  const newTag = await Tag.create({ tag_name: req.body.tag_name });
   
   res.status(200).json(newTag);
 
@@ -55,14 +54,14 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
   try {
-    const updatedTag = await Tag.update({ tagName: req.body.tagName }, {
+    const updatedTag = await Tag.update({ tag_name: req.body.tag_name }, {
       where: {
         id: req.params.id
       }
     });
 
     if (!updatedTag || updatedTag[0] === 0) {
-      res.status(404).json({ message: 'Can\'t update. No category found with that id!' });
+      res.status(404).json({ message: 'Can\'t update. No tag found with that id!' });
       return;
     }
 
