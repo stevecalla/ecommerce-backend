@@ -6,16 +6,14 @@ class Category extends Model {}
 
 Category.init(
   {
-    // todo define columns
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    categoryName: {
+    category_name: {
       type: DataTypes.STRING,
-      //TODO:Doesn't allow null values.
       allowNull: false,
     },
   },
