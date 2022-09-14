@@ -87,13 +87,16 @@ router.put('/:id', (req, res) => {
     },
   })
     .then((product) => {
+      console.log('AAAA = ', product);
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })
     .then((productTags) => {
+      // console.log('BBBBB = ', productTags);
       // get list of current tag_ids
       const productTagIds = productTags.map(({ tag_id }) => tag_id);
       // create filtered list of new tag_ids
+      // console.log('CCCCC = ', req.body.tagIds);
       const newProductTags = req.body.tagIds
         .filter((tag_id) => !productTagIds.includes(tag_id))
         .map((tag_id) => {

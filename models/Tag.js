@@ -14,7 +14,7 @@ Tag.init(
       autoIncrement: true,
     },
     //todo:tag_name`
-    tagName: {
+    tag_name: {
       //todo:String.
       type: DataTypes.STRING,
     },

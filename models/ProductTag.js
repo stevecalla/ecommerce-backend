@@ -14,7 +14,7 @@ ProductTag.init(
       autoIncrement: true,
     },
     //todo:product_id`
-    productId: {
+    product_id: { 
       //todo:Integer.
       type: DataTypes.INTEGER,
       //todo References the `Product` model's `id`.
@@ -26,7 +26,7 @@ ProductTag.init(
       }
     },
     //todo:tag_id`
-    tagId: {
+    tag_id: {
       //todo:Integer.
       type: DataTypes.INTEGER,
       //todo References the `Tag` model's `id`.
