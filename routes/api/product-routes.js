@@ -85,14 +85,26 @@ router.put('/:id', (req, res) => {
     .then((product) => {
       console.log('AAAA = ', product);
       // find all associated tags from ProductTag
+
+      if (product[0] === 0) {  //section revised code (hacky solution but I don't want to re-write the entire code)
+        res.status(400).json({"missing": "No product with that id"});
+        return
+      }
+
+      // // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })
     .then((productTags) => {
-      // console.log('BBBBB = ', productTags);
+      console.log('BBBB = ', productTags, productTags.length);
+
+      if (!productTags || productTags.length === 0) {  //section revised code (hacky solution but I don't want to re-write the entire code)
+        res.status(400).json({"missing": "big error #2"});
+        return
+      }
+
       // get list of current tag_ids
       const productTagIds = productTags.map(({ tag_id }) => tag_id);
       // create filtered list of new tag_ids
-      // console.log('CCCCC = ', req.body.tagIds);
       const newProductTags = req.body.tagIds
         .filter((tag_id) => !productTagIds.includes(tag_id))
         .map((tag_id) => {
@@ -112,10 +124,23 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedProductTags) => {
+      console.log('CCCC = ', updatedProductTags);
+
+    if (!updatedProductTags) {  //section revised code (hacky solution but I don't want to re-write the entire code)
+      console.log('DDDD = ', "big error #3");
+      res.status(400).json({"missing": "big error #3"});
+      return
+    }
+      res.json(updatedProductTags)
+    })
+    // .then((updatedProductTags) => res.json(updatedProductTags); //section original starter code throws an error if no product exists
     .catch((err) => {
       // console.log(err);
-      res.status(400).json(err);
+
+      res.send(); //section revised code (hacky solution but I don't want to re-write the entire code)
+
+      // res.status(400).json(err); //section original starter code throws an error if no product exists
     });
 });
 
